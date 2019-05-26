@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DogsService} from '../../services/dogs.service';
+import {Dog} from '../../models/dog';
 
 @Component({
   selector: 'app-feed',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor() { }
+  dogs: Dog[] = [];
+
+  constructor(private dogsService: DogsService) { }
 
   ngOnInit() {
+    this.dogsService.getDogs().subscribe( dogs => {
+      const tmp: any = dogs;
+      this.dogs = tmp.data.docs;
+      console.log(this.dogs);
+    });
   }
 
 }
