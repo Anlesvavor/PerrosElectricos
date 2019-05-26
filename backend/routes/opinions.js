@@ -1,0 +1,17 @@
+const express = require('express');
+const router = express.Router();
+const opinionsController = require('../controllers/opinionsController');
+
+
+router.get('/', opinionsController.listAll);
+
+router.post('/new', opinionsController.create);
+
+router.get('/show/:id', opinionsController.listOne);
+
+router.put('/edit/:id', opinionsController.update);
+
+router.delete('/delete/:id', opinionsController.drop);
+
+
+module.exports = router;

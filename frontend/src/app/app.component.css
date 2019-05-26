@@ -1,0 +1,23 @@
+main {
+  width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+mat-card {
+  margin: auto;
+  width: 75%;
+  display: block;
+  margin-bottom: 2rem;
+  margin-top : 2rem;
+}
+
+mat-tab {
+  width: 80%;
+  margin: auto;
+  display: block;
+}
+
+.mat-tab-label {
+  width: 33%;
+}

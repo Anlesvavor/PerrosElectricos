@@ -1,0 +1,24 @@
+<mat-card>
+  <h4>Agregar Gato</h4>
+  <form [formGroup]="gatoForm" (ngSubmit)="onSubmit()">
+      <!--<label for="nombre">Nombre</label>-->
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre" type="text" formControlName="nombre" class="form-control" id="nombre">
+    </mat-form-field>
+
+      <!--<label for="edad">Edad</label>-->
+    <mat-form-field>
+      <mat-label>Edad</mat-label>
+      <input matInput type="number" placeholder="Edad" formControlName="edad" class="form-control" id="edad">
+    </mat-form-field>
+      <!--<label for="pasatiempo">Pasatiempo</label>-->
+
+    <mat-form-field>
+      <mat-label>Pasatiempo</mat-label>
+      <input matInput type="text" placeholder="Pasatiempo" formControlName="pasatiempo" class="form-control" id="pasatiempo">
+    </mat-form-field>
+
+    <button mat-button mat-raised-button color="primary" type="submit" [disabled]="!gatoForm.valid">Agregar</button>
+  </form>
+</mat-card>

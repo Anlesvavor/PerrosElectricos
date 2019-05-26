@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<ng-container *ngIf="loginComponent.loggeado === false">
+  <app-login></app-login>
+</ng-container>
+<ng-container *ngIf="loginComponent.loggeado === true">
+  <main>
+    <mat-tab-group>
+      <mat-tab class="mat-tab-label" label="Perros">
+        <app-perros></app-perros>
+      </mat-tab>
+      <mat-tab class="mat-tab-label" label="Gatos">
+        <app-gatos></app-gatos>
+      </mat-tab>
+      <mat-tab class="mat-tab-label" label="Agregar Perro">
+        <app-agregar-perro></app-agregar-perro>
+      </mat-tab>
+      <mat-tab class="mat-tab-label" label="Agregar Gato">
+        <app-agregar-gato></app-agregar-gato>
+      </mat-tab>
+    </mat-tab-group>
+  </main>
+</ng-container>
+
