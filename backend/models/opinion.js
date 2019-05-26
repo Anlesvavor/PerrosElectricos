@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const mongoosePaginate = require('mongoose-paginate-v2');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
@@ -51,6 +51,6 @@ class Opinion {
         this._opinion = value;
     }
 }
-
+schema.plugin(mongoosePaginate);
 schema.loadClass(Opinion);
 module.exports = mongoose.model('Opinion', schema);

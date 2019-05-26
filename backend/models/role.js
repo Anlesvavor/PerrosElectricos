@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const mongoosePaginate = require('mongoose-paginate-v2');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -30,6 +30,6 @@ class Role{
         this._name = value;
     }
 }
-
+schema.plugin(mongoosePaginate);
 schema.loadClass(Role);
 module.exports = mongoose.model('Role', schema);

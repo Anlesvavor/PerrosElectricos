@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const mongoosePaginate = require('mongoose-paginate-v2');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
@@ -11,11 +11,11 @@ const schema = new Schema({
 });
 
 class Dog {
-    constructor(id, name, description, userId) {
+    constructor(id, name, description, user_id) {
         this._id = id;
         this._name = name;
         this._description = description;
-        this._userId = userId;
+        this._user_id = user_id;
     }
 
     get id() {
@@ -43,13 +43,13 @@ class Dog {
     }
 
     get userId() {
-        return this._userId;
+        return this._user_id;
     }
 
     set userId(value) {
-        this._userId = value;
+        this._user_id = value;
     }
 }
-
+schema.plugin(mongoosePaginate);
 schema.loadClass(Dog);
 module.exports = mongoose.model('Dog', schema);
