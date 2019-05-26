@@ -18,8 +18,8 @@ app.use(bodyParser.json({limit: '10mb', extended: true}));
 
 
 
-mongoose.connect('mongodb://80.211.62.223:27017');
-
+//mongoose.connect('mongodb://80.211.62.223:27017');
+mongoose.connect('mongodb://localhost:27017/perros', {useNewUrlParser: true});
 const connection = mongoose.connection;
 
 connection.once('open', () => {
@@ -68,5 +68,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

@@ -14,9 +14,9 @@ function create(req, res, next) {
     }
 
     let dog = new Dog({
-        _name : body.name,
-        _description: body.description,
-        _user_id: body.userId
+        _name : body._name,
+        _description: body._description,
+        _user_id: body._user_id
     });
 
     dog.save()
@@ -65,9 +65,9 @@ function update(req, res, next) {
 
     Dog.findById(req.params.id)
         .then((obj) => {
-            obj.name = ch(obj.name, req.body.name);
-            obj.description = ch(obj.description, req.body.description);
-            obj.user_id = ch(obj.user_id, req.body.userId);
+            obj._name = ch(obj._name, req.body._name);
+            obj._description = ch(obj._description, req.body._description);
+            obj._user_id = ch(obj._user_id, req.body._user_id);
 
             obj.save()
                 .then(obj => {

@@ -14,11 +14,11 @@ function create(req, res, next) {
     }
 
     let user = new User({
-        _email : body.email,
-        _password: body.password,
-        _role: body.role,
-        _name: body.name,
-        _surname: body.surname
+        _email : body._email,
+        _password: body._password,
+        _role: body._role,
+        _name: body._name,
+        _surname: body._surname
     });
 
     user.save()
@@ -67,11 +67,11 @@ function update(req, res, next) {
 
     User.findById(req.params.id)
         .then((obj) => {
-            obj._email = ch(obj._email, req.body.email);
-            obj._password = ch(obj._password, req.body.password);
-            obj._role = ch(obj._role, req.body.role);
-            obj._name = ch(obj._name, req.body.name);
-            obj._surname = ch(obj._surname, req.body.surname);
+            obj._email = ch(obj._email, req.body._email);
+            obj._password = ch(obj._password, req.body._password);
+            obj._role = ch(obj._role, req.body._role);
+            obj._name = ch(obj._name, req.body._name);
+            obj._surname = ch(obj._surname, req.body._surname);
 
             obj.save()
                 .then(obj => {

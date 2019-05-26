@@ -12,8 +12,8 @@ function create(req, res, next) {
     }
 
     let role = new Role({
-        _id: req.body.id,
-        _name : req.body.name
+        _id: req.body._id,
+        _name : req.body._name
     });
 
     role.save()
@@ -59,8 +59,8 @@ function listAll(req, res, next) {
 function update(req, res, next) {
     Role.findById(req.params.id)
         .then((obj) => {
-            obj.id = req.body.id ? req.body.id : obj.id;
-            obj.name = req.body.name ? req.body.name : obj.name;
+            obj._id = req.body._id ? req.body._id : obj._id;
+            obj._name = req.body._name ? req.body._name : obj._name;
 
             obj.save()
                 .then(obj => {

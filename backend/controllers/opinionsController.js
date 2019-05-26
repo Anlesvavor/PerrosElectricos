@@ -14,9 +14,9 @@ function create(req, res, next) {
     }
 
     let opinion = new Opinion({
-        _dog_id : body.dogId,
-        _user_id: body.userId,
-        _opinion: body.opinion
+        _dog_id : body._dog_id,
+        _user_id: body._user_id,
+        _opinion: body._opinion
     });
 
     opinion.save()
@@ -66,9 +66,9 @@ function update(req, res, next) {
     Opinion.findById(req.params.id)
         .then((obj) => {
             const body = req.body;
-            obj.dog_id = ch(obj.dog_id, body.dogId);
-            obj.user_id = ch(obj.user_id, body.userId);
-            obj.opinion = ch(obj.opinion, body.opinion);
+            obj._dog_id = ch(obj._dog_id, body._dog_id);
+            obj._user_id = ch(obj._user_id, body._user_id);
+            obj._opinion = ch(obj._opinion, body._opinion);
 
 
             obj.save()
