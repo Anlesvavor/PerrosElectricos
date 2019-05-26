@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DogsService} from '../../services/dogs.service';
 import {Dog} from '../../models/dog';
+import {MatCard} from "@angular/material";
 
 @Component({
   selector: 'app-feed',

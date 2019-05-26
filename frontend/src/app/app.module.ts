@@ -14,9 +14,20 @@ import {UsersService} from './services/users.service';
 import {OpinionsService} from './services/opinions.service';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
+import {
+  MatCardModule,
+  MatTabsModule,
+  MatCardTitle,
+  MatToolbar,
+  MatToolbarModule,
+  MatMenuModule
+} from "@angular/material";
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
-  { path: 'feed', component: FeedComponent}
+  { path: 'feed', component: FeedComponent},
+  { path: 'dog-card', component: DogCardComponent}
 ];
 
 @NgModule({
@@ -34,7 +45,12 @@ const routes: Routes = [
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatCardModule,
+    BrowserAnimationsModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatMenuModule,
   ],
   providers: [DogsService, UsersService, OpinionsService],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import {DogsService} from './services/dogs.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'frontend';
 }
