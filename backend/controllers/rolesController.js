@@ -1,6 +1,7 @@
 const express = require('express');
 const Role = require('../models/role');
 const {validationResult} = require('express-validator/check');
+var ObjectID = require('mongodb').ObjectID;
 
 function create(req, res, next) {
 
@@ -12,7 +13,7 @@ function create(req, res, next) {
     }
 
     let role = new Role({
-        _id: req.body._id,
+        _id: req.body._id ? req.body._id : new ObjectID(),
         _name : req.body._name
     });
 

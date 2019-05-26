@@ -1,6 +1,7 @@
 const express = require('express');
 const Opinion = require('../models/opinion');
 const {validationResult} = require('express-validator/check');
+var ObjectID = require('mongodb').ObjectID;
 
 function create(req, res, next) {
 
@@ -14,6 +15,7 @@ function create(req, res, next) {
     }
 
     let opinion = new Opinion({
+        _id: req.body._id ? req.body._id : new ObjectID(),
         _dog_id : body._dog_id,
         _user_id: body._user_id,
         _opinion: body._opinion
