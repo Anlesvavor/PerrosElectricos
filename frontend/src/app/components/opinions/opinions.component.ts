@@ -23,4 +23,7 @@ export class OpinionsComponent implements OnInit {
     });
   }
 
+  delete(id: string) {
+      this.opinionsService.deleteOpinion(id);
+  }
 }

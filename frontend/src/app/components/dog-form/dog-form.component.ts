@@ -61,7 +61,8 @@ export class DogFormComponent {
     console.log("onSubmit");
     console.log(this.upload);
     this.dogsService.postDog(this.upload).subscribe(() => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/feed']);
     });
+    this.router.navigate(['/']);
   }
 }

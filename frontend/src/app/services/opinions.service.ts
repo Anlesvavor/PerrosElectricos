@@ -51,4 +51,8 @@ export class OpinionsService {
   deleteByDogId(id: string) {
     return this.http.delete(`${this.API}/${this.OPINIONS}/${this.DELETE_BY_DOG}/${id}`);
   }
+
+  deleteOpinion(id: string) {
+    return this.http.delete(`${this.API}/${this.OPINIONS}/${this.DELETE}/${id}`);
+  }
 }
