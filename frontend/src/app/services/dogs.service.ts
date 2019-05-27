@@ -38,6 +38,7 @@ export class DogsService implements OnInit {
       'Content-Type': 'application/json'
     });
     const options = { headers: headers };
+    console.log(data);
     return this.http.post(`${this.API}/${this.DOGS}/${ this.POST}`, data, options);
   }
 }

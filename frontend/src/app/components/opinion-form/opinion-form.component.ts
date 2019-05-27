@@ -18,9 +18,11 @@ export class OpinionFormComponent implements OnInit {
   post: Opinion = new Opinion();
 
   @Input()
-  dog: Dog;
+    // tslint:disable-next-line:variable-name
+  _dog_id: string;
   @Input()
-  user: User;
+    // tslint:disable-next-line:variable-name
+  _user_id: string;
 
   constructor(private opinionsService: OpinionsService,
               private fb: FormBuilder,
@@ -36,7 +38,7 @@ export class OpinionFormComponent implements OnInit {
 
   onSubmit() {
     this.post._user_id = '0';
-    this.post._dog_id = this.dog._id;
+    this.post._dog_id = this._dog_id;
     this.post._opinion = this.opinionForm.value.opinion;
     console.log(this.post);
     this.opinionsService.postOpinion(this.post).subscribe(() => {
