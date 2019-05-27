@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatCard} from "@angular/material";
 import {Dog} from "../../models/dog";
+import {DogsService} from "../../services/dogs.service";
+import {OpinionsService} from "../../services/opinions.service";
 
 
 @Component({
@@ -13,9 +15,15 @@ export class DogCardComponent implements OnInit {
   @Input()
   dog: Dog;
 
-  constructor() { }
+  constructor(
+    private dogsService: DogsService,
+    private opinionsService: OpinionsService
+  ) { }
 
   ngOnInit() {
   }
 
+  delete() {
+    this.dogsService.dropDog(this.dog._id);
+  }
 }

@@ -3,6 +3,7 @@ import {Url} from 'url';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Dog} from "../models/dog";
+import {OpinionsService} from "./opinions.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class DogsService implements OnInit {
   public PUT = 'edit';
   public DELETE = 'delete';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private opinionsService: OpinionsService) { }
 
   getDogs() {
     return this.http.get(`${this.API}/${this.DOGS}`).pipe(
@@ -40,5 +41,15 @@ export class DogsService implements OnInit {
     const options = { headers: headers };
     console.log(data);
     return this.http.post(`${this.API}/${this.DOGS}/${ this.POST}`, data, options);
+  }
+
+  dropDog(id: string) {
+    this.http.delete(`${this.API}/${this.DOGS}/${this.DELETE}/${id}`)
+      .toPromise()
+      .then( x => {
+          this.opinionsService.deleteByDogId(id);
+        }
+      )
+      .catch();
   }
 }

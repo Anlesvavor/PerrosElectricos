@@ -16,6 +16,7 @@ export class OpinionsService {
   public PUT = 'edit';
   public DELETE = 'delete';
   public DOGID = 'dogid';
+  public DELETE_BY_DOG = 'deletebydogid';
 
 
   constructor(private http: HttpClient) { }
@@ -45,5 +46,9 @@ export class OpinionsService {
         return body || {};
       })
     );
+  }
+
+  deleteByDogId(id: string) {
+    return this.http.delete(`${this.API}/${this.OPINIONS}/${this.DELETE_BY_DOG}/${id}`);
   }
 }

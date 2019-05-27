@@ -133,11 +133,28 @@ function listwithDogId(req, res, next) {
     });
 }
 
+function dropByDogId(req, res, next) {
+    Opinion.deleteMany({_dog_id: req.params.id})
+        .then( obj => {
+            res.status(200).json({
+                errors:[],
+                data: obj
+            });
+        })
+        .catch( err => {
+            res.status(500).json({
+                errors: [{ message: 'Something went wrong'}],
+                data : []
+            })
+        })
+}
+
 module.exports = {
     create,
     listOne,
     listAll,
     update,
     drop,
-    listwithDogId
+    listwithDogId,
+    dropByDogId
 };

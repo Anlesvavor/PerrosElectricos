@@ -15,5 +15,6 @@ router.put('/edit/:id', opinionsController.update);
 
 router.delete('/delete/:id', opinionsController.drop);
 
+router.delete('/deletebydogid/:id', opinionsController.dropByDogId);
 
 module.exports = router;
