@@ -7,15 +7,17 @@ const schema = new Schema({
     _id: ObjectId,
     _name: String,
     _description: String,
-    _user_id: String
+    _user_id: String,
+    _image: String
 });
 
 class Dog {
-    constructor(id, name, description, user_id) {
+    constructor(id, name, description, user_id, image) {
         this._id = id;
         this._name = name;
         this._description = description;
         this._user_id = user_id;
+        this._image = image;
     }
 
     get id() {
@@ -49,6 +51,15 @@ class Dog {
     set userId(value) {
         this._user_id = value;
     }
+
+    get image() {
+        return this._image;
+    }
+
+    set image(value) {
+        this._image = value;
+    }
+
 }
 schema.plugin(mongoosePaginate);
 schema.loadClass(Dog);

@@ -1,7 +1,8 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Url} from 'url';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {Dog} from "../models/dog";
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,14 @@ export class DogsService implements OnInit {
 
   ngOnInit(): void {
     console.log(this.getDogs());
+  }
+
+  postDog(dog: Dog) {
+    const data = JSON.stringify(dog);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const options = { headers: headers };
+    return this.http.post(`${this.API}/${this.DOGS}/${ this.POST}`, data, options);
   }
 }

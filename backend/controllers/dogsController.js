@@ -18,7 +18,8 @@ function create(req, res, next) {
         _id: req.body._id ? req.body._id : new ObjectID(),
         _name : body._name,
         _description: body._description,
-        _user_id: body._user_id
+        _user_id: body._user_id,
+        _image: body._image
     });
 
     dog.save()
@@ -43,7 +44,7 @@ function listAll(req, res, next) {
     const options = {
         page: page,
         limit: 1000,
-        select: '_name _description _user_id'
+        select: '_name _description _user_id _image'
     };
 
     Dog.paginate({}, options)
@@ -70,6 +71,7 @@ function update(req, res, next) {
             obj._name = ch(obj._name, req.body._name);
             obj._description = ch(obj._description, req.body._description);
             obj._user_id = ch(obj._user_id, req.body._user_id);
+            obj._image = ch(obj._image, req.body._image);
 
             obj.save()
                 .then(obj => {

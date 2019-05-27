@@ -14,12 +14,21 @@ export class FeedComponent implements OnInit {
 
   constructor(private dogsService: DogsService) { }
 
-  ngOnInit() {
+  getDogs() {
     this.dogsService.getDogs().subscribe( dogs => {
       const tmp: any = dogs;
+      // for (const v of tmp.data.docs) {
+      //   v._image = 'data:image/jpeg;base64,' + v._image;
+      // }
       this.dogs = tmp.data.docs;
+
       console.log(this.dogs);
     });
+  }
+
+  ngOnInit() {
+    this.getDogs();
+
   }
 
 }

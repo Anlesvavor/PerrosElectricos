@@ -7,4 +7,6 @@ export class Dog {
   _description: string;
   // tslint:disable-next-line:variable-name
   _user_id: string;
+  // tslint:disable-next-line:variable-name
+  _image: string;
 }
