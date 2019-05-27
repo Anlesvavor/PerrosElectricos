@@ -13,17 +13,20 @@ import {DogsService} from './services/dogs.service';
 import {UsersService} from './services/users.service';
 import {OpinionsService} from './services/opinions.service';
 import {AppRoutingModule} from './app-routing.module';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {
   MatCardModule,
   MatTabsModule,
   MatCardTitle,
   MatToolbar,
   MatToolbarModule,
-  MatMenuModule
-} from "@angular/material";
+  MatMenuModule,
+  MatFormField, MatDivider, MatDividerModule, MatFormFieldModule, MatInputModule
+} from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { OpinionFormComponent } from './components/opinion-form/opinion-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
   { path: 'feed', component: FeedComponent},
@@ -38,7 +41,8 @@ const routes: Routes = [
     DogFormComponent,
     OpinionsComponent,
     OpinionsFormComponent,
-    OpinionsCardComponent
+    OpinionsCardComponent,
+    OpinionFormComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,11 @@ const routes: Routes = [
     MatTabsModule,
     MatToolbarModule,
     MatMenuModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   providers: [DogsService, UsersService, OpinionsService],
   bootstrap: [AppComponent]

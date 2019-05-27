@@ -1,0 +1,21 @@
+<form [formGroup]="opinionForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Comentario</mat-label>
+    <input matInput
+           placeholder="Comentario"
+           type="text"
+           for="opinion"
+           formControlName="opinion"
+           class="form-control"
+           id="opinion">
+  </mat-form-field>
+  <br>
+  <button mat-button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!opinionForm.valid"
+  >
+    Agregar
+  </button>
+</form>
