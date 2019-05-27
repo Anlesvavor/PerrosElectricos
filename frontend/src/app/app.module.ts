@@ -27,6 +27,7 @@ import {
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { OpinionFormComponent } from './components/opinion-form/opinion-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material";
 
 const routes: Routes = [
   { path: 'feed', component: FeedComponent},
@@ -58,7 +59,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDividerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
 
   ],
   providers: [DogsService, UsersService, OpinionsService],

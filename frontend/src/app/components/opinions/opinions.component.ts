@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {OpinionsService} from "../../services/opinions.service";
+import {Opinion} from "../../models/opinion";
 
 @Component({
   selector: 'app-opinions',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpinionsComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+    // tslint:disable-next-line:variable-name
+  _dog_id: string;
+  opinions: Opinion[] = [];
+
+  constructor(private opinionsService: OpinionsService) { }
 
   ngOnInit() {
+    this.opinionsService.getOpinionById(this._dog_id).subscribe(opinions => {
+      const tmp: any = opinions;
+      this.opinions = tmp.data;
+    });
   }
 
 }

@@ -1,3 +1,5 @@
-<p>
-  opinions works!
-</p>
+<ng-container *ngFor="let opinion of opinions">
+  <br>
+  <h4>{{opinion._user_id}}</h4>
+  <p>{{opinion._opinion}}</p>
+</ng-container>

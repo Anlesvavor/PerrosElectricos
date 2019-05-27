@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {Dog} from "../../models/dog";
-import {User} from "../../models/user";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Dog} from '../../models/dog';
+import {User} from '../../models/user';
+import {OpinionsService} from '../../services/opinions.service';
+import {Router} from '@angular/router';
+import {Opinion} from '../../models/opinion';
 
 @Component({
   selector: 'app-opinion-form',
@@ -10,12 +13,36 @@ import {User} from "../../models/user";
 })
 export class OpinionFormComponent implements OnInit {
 
+  opinionForm: FormGroup;
+  opinions: any = [];
+  post: Opinion = new Opinion();
+
   @Input()
   dog: Dog;
   @Input()
   user: User;
 
-  constructor() { }
+  constructor(private opinionsService: OpinionsService,
+              private fb: FormBuilder,
+              private router: Router) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.opinionForm = this.fb.group({
+      opinion: null
+    });
+  }
+
+  onSubmit() {
+    this.post._user_id = '0';
+    this.post._dog_id = this.dog._id;
+    this.post._opinion = this.opinionForm.value.opinion;
+    console.log(this.post);
+    this.opinionsService.postOpinion(this.post).subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
 
   ngOnInit() {
   }

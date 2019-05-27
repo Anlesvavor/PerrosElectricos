@@ -119,10 +119,25 @@ function drop(req, res, next) {
         })
 }
 
+function listwithDogId(req, res, next) {
+    Opinion.find({ _dog_id: req.params.id}, (err, opinion) => {
+        res.status(200).json({
+            errors:[],
+            data: opinion
+        });
+    }).catch((err) => {
+        res.status(500).json({
+            errors:[{message:'something gone wrong'}],
+            data: []
+        });
+    });
+}
+
 module.exports = {
     create,
     listOne,
     listAll,
     update,
-    drop
+    drop,
+    listwithDogId
 };
